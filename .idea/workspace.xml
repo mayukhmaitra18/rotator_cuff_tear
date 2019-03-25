@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb4eab69-62ff-4c57-985a-c2b68b536671" name="Default Changelist" comment="" />
+    <list default="true" id="cb4eab69-62ff-4c57-985a-c2b68b536671" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hough_transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/hough_transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kaze_transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/kaze_transform.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hough_transform.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="360">
+              <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -27,7 +32,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="65">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -39,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/kaze_transform.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+            <state relative-caret-position="930">
+              <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -61,7 +66,22 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>pickle</find>
+      <find>kps</find>
+      <find>extract_features</find>
+      <find>dsc</find>
+      <find>needed_size</find>
+      <find>batch_extractor</find>
+      <find>pickled_db_path</find>
     </findStrings>
+    <replaceStrings>
+      <replace>descriptor</replace>
+      <replace>desc_needed_size</replace>
+      <replace>extractor_driver</replace>
+      <replace>pickled_file</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -73,9 +93,9 @@
         <option value="$PROJECT_DIR$/feature_extraction.py" />
         <option value="$PROJECT_DIR$/hough_2.py" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/hough_transform.py" />
         <option value="$PROJECT_DIR$/surf_sift" />
         <option value="$PROJECT_DIR$/surf_sift.py" />
+        <option value="$PROJECT_DIR$/hough_transform.py" />
         <option value="$PROJECT_DIR$/kaze_transform.py" />
       </list>
     </option>
@@ -84,6 +104,7 @@
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -161,15 +182,16 @@
       <workItem from="1552731590699" duration="806000" />
       <workItem from="1552909876491" duration="3011000" />
       <workItem from="1553225049970" duration="2196000" />
-      <workItem from="1553424148095" duration="13643000" />
+      <workItem from="1553424148095" duration="15984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19656000" />
+    <option name="totallyTimeSpent" value="21997000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -258,9 +280,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/features.pck">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/hough_transform.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="360">
+          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -269,7 +295,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="65">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -277,13 +303,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features.pck">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/kaze_transform.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        <state relative-caret-position="930">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

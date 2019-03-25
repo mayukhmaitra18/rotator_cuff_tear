@@ -1,70 +1,71 @@
 import cv2
 import numpy as np
-import scipy
-from scipy.misc import imread
 import _pickle as pickle
-import random
 import os
-import matplotlib.pyplot as plt
 
 
 # Feature extractor
-def extract_features(image_path, vector_size=32):
+def feature_extraction(image_path, vector_size=32):
     image = cv2.imread(image_path,1)
     try:
-        # Using KAZE, cause SIFT, ORB and other was moved to additional module
-        # which is adding addtional pain during install
+        # Using KAZE transform to detect feature vectors
         alg = cv2.KAZE_create()
-        # Dinding image keypoints
-        kps = alg.detect(image)
-        # Getting first 32 of them.
-        # Number of keypoints is varies depend on image size and color pallet
-        # Sorting them based on keypoint response value(bigger is better)
-        kps = sorted(kps, key=lambda x: -x.response)[:vector_size]
+        
+        # Detecting keypoints in image
+        keypoints = alg.detect(image)
+        
+        # Number of keypoints varies depending on the size of image as well as color
+        # Bigger keypoint response value is better, sorting according to that 
+        keypoints = sorted(keypoints, key=lambda x: -x.response)[:vector_size]
+        
         # computing descriptors vector
-        kps, dsc = alg.compute(image, kps)
-        # Flatten all of them in one big vector - our feature vector
-        dsc = dsc.flatten()
-        # Making descriptor of same size
+        keypoints, descriptor = alg.compute(image, keypoints)
+        
+        # Flattening the above vectors- the required feature vector
+        descriptor = descriptor.flatten()
+        
+        
         # Descriptor vector size is 64
-        needed_size = (vector_size * 64)
-        if dsc.size < needed_size:
-            # if we have less the 32 descriptors then just adding zeros at the
-            # end of our feature vector
-            dsc = np.concatenate([dsc, np.zeros(needed_size - dsc.size)])
+        desc_needed_size = (vector_size * 64)
+        if descriptor.size < desc_needed_size:
+            
+            descriptor = np.concatenate([descriptor, np.zeros(desc_needed_size - descriptor.size)])
     except cv2.error as e:
         print('Error: ', e)
         return None
 
-    return dsc
+    return descriptor
 
 
-def batch_extractor(images_path, pickled_db_path="kaze_features.pck"):
+def extractor_driver(images_path, pickled_file="kaze_features.pck"):
     files = [os.path.join(images_path, p) for p in sorted(os.listdir(images_path))]
 
     result = {}
     for f in files:
-        #print('Extracting features from image %s' % f)
+
         name = f.split('/')[-1].lower()
-        result[name] = extract_features(f)
+        result[name] = feature_extraction(f)
 
     # saving all our feature vectors in pickled file
-    with open(pickled_db_path, 'wb') as fp:
+    with open(pickled_file, 'wb') as fp:
         pickle.dump(result, fp)
-    with open(pickled_db_path, 'rb') as fp:
+    with open(pickled_file, 'rb') as fp:
         data = pickle.load(fp)
-    names = []
-    matrix = []
+    image_names = []
+    feature_matrix = []
+
+    #storing the image names and their matrices
     for k, v in data.items():
-        names.append(k)
-        matrix.append(v)
-    matrix = np.array(matrix)
-    names = np.array(names)
+        image_names.append(k)
+        feature_matrix.append(v)
+    image_names = np.array(image_names)
+    feature_matrix = np.array(feature_matrix)
+
     print('features for images:',data)
 
-def run():
+def main():
     images_path = './images/'
     files = [os.path.join(images_path, p) for p in sorted(os.listdir(images_path))]
-    batch_extractor(images_path)
+    extractor_driver(images_path)
 
-run()
+main()
