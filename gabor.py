@@ -26,6 +26,7 @@ def main():
 
     res1 = process(img, filters)
     cv2.imshow('result', res1)
+    cv2.imwrite('gabor.png',res1)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
