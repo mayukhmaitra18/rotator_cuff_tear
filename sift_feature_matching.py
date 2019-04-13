@@ -7,7 +7,7 @@ import os
 pathIn = './images/'
 files = [f for f in os.listdir(pathIn)]
 files.sort()
-path_1 = '/Users/mayukhmaitra/PycharmProjects/OpenCV'
+path_1 = '/Users/mayukhmaitra/PycharmProjects/OpenCV/sift_res'
 for images in os.listdir(pathIn):
 
     inp_image = cv2.imread('./images/' + str(images), 0)
