@@ -8,7 +8,7 @@ import os
 pathIn = './images/'
 files = [f for f in os.listdir(pathIn)]
 files.sort()
-path_1 = './SIFT_res'
+path_1 = './SIFT_result'
 for images in os.listdir(pathIn):
 
     result = 'res_' + str(images)
@@ -21,7 +21,7 @@ for images in os.listdir(pathIn):
     cv2.imshow("Resultant Image", res1)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
+'''
     for images_1 in os.listdir(pathIn):
 
         img_input_2 = cv2.imread('./images/'+str(images_1),0)
@@ -52,7 +52,7 @@ for images in os.listdir(pathIn):
        #plt.imshow(res2, 'gray')
        #plt.title('rotated img')
        #plt.axis('off')
-'''
+
        bf_match = cv2.BFMatcher()
        match = bf_match.knnMatch(descriptor, descriptor_2, k=2)
 
