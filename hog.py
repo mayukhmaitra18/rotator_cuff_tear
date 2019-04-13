@@ -10,8 +10,22 @@ path = './images'
 for images in os.listdir(path):
 
     image = cv2.imread("./images/" + str(images))
-    gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    #image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 
+    #applying hough for curve detection
+    inputImageGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    smoothImage = cv2.GaussianBlur(inputImageGray, (5, 5), 0)
+
+    edges = cv2.Canny(smoothImage, 150, 200, apertureSize=3)
+    minLineLength = 1000
+    maxLineGap = 5
+    lines = cv2.HoughLinesP(edges, cv2.HOUGH_PROBABILISTIC, np.pi / 180, 30, minLineLength, maxLineGap)
+    for m in range(0, len(lines)):
+        for m1, n1, m2, n2 in lines[m]:
+            pts = np.array([[m1, n1], [m2, n2]], np.int32)
+            cv2.polylines(image, [pts], True, (0, 255, 0))
+    
+    
     # Setting HOG Parameters
     cell_size = (10, 10)
     cells_per_block = (2, 2)
@@ -23,8 +37,8 @@ for images in os.listdir(path):
                   cells_per_block[1] * cell_size[1])
 
     # Total number of cells in image
-    x_cell = gray_image.shape[1] // cell_size[0]
-    y_cell = gray_image.shape[0] // cell_size[1]
+    x_cell = image.shape[1] // cell_size[0]
+    y_cell = image.shape[0] // cell_size[1]
 
     # Block stride
     block_stride = (cell_size[0] * horizontal_stride,
@@ -41,7 +55,7 @@ for images in os.listdir(path):
                             cell_size,                      # cell size
                             hist_bars)                      # num of histogram's bars.
 
-    HOG_descriptor = HOG.compute(gray_image)
+    HOG_descriptor = HOG.compute(image)
 
 
     # blocks inside detection window (x axis)
@@ -169,11 +183,11 @@ for images in os.listdir(path):
             HOG_on_img.invert_yaxis()
             HOG_on_img.set_aspect(aspect=1)
             HOG_on_img.set_facecolor('white')
-            HOG_on_img.imshow(gray_image, cmap='gray')
+            HOG_on_img.imshow(image, cmap='gray')
             HOG_on_img.add_patch(rect4)
             HOG_on_img.xaxis.set_visible(False)
             HOG_on_img.yaxis.set_visible(False)
-            HOG_on_img.imshow(gray_image, cmap='gray')
+            HOG_on_img.imshow(image, cmap='gray')
 
             # zoomed in view of the selected cell on the image
             zoom.clear()
@@ -187,7 +201,7 @@ for images in os.listdir(path):
             zoom.add_patch(rect5)
             zoom.xaxis.set_visible(False)
             zoom.yaxis.set_visible(False)
-            zoom.imshow(gray_image, cmap='gray')
+            zoom.imshow(image, cmap='gray')
 
             # visualizing the histogram for the selected cell
             hist.clear()
